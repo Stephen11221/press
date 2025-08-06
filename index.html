@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Surprise</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: "Cursive", Arial, sans-serif;
+      margin-top: 50px;
+      background-color: #fff0f5;
+      overflow: hidden;
+    }
+    h2 {
+      color: #ff3366;
+    }
+
+    /* Styled Romantic Button */
+    button {
+      background: linear-gradient(45deg, #ff6b81, #ff3366);
+      color: white;
+      border: none;
+      padding: 15px 40px;
+      font-size: 20px;
+      font-family: "Cursive", Arial, sans-serif;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+      transition: all 0.3s ease;
+      animation: pulse 1.5s infinite;
+    }
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    #loveMessage {
+      display: none;
+      font-size: 28px;
+      color: #ff69b4;
+      margin-top: 20px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .image-container {
+      display: none;
+      margin-top: 20px;
+      position: relative;
+      display: inline-block;
+    }
+    #myImage {
+      width: 400px; /* Bigger image */
+      border-radius: 20px;
+      box-shadow: 0 0 25px pink;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Heart next to image */
+    .side-heart {
+      position: absolute;
+      right: -50px; /* Slightly outside image */
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 60px;
+      color: #ff3366;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    /* Floating hearts & flowers */
+    .floating {
+      position: absolute;
+      font-size: 28px;
+      animation: floatUp 6s linear forwards;
+      opacity: 0.8;
+    }
+
+    /* Flying birds & butterflies carrying hearts */
+    .flyer {
+      position: absolute;
+      font-size: 32px;
+      animation: flyDiagonal 8s linear forwards;
+      white-space: nowrap;
+    }
+
+    @keyframes flyDiagonal {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(120vw, -120vh) scale(1.2); opacity: 0; }
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Heartbeat animation for the side heart */
+    @keyframes heartbeat {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.3); }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h2>Click the button for a romantic surprise ❤️</h2>
+  <button onclick="showLove()">Show Love</button>
+
+  <div id="loveMessage">You are the reason my heart smiles 💖</div>
+
+  <div class="image-container" id="imageContainer">
+    <img id="myImage" src="/317b912d-6ff5-4155-9da9-92eeb68ec60f.jpeg" alt="Romantic Image">
+    <div class="side-heart">💖</div>
+  </div>
+
+  <script>
+    function showLove() {
+      // Show message and image
+      document.getElementById("loveMessage").style.display = "block";
+      document.getElementById("imageContainer").style.display = "inline-block";
+
+      // Generate floating hearts & flowers
+      for (let i = 0; i < 20; i++) {
+        createFloatingSymbol();
+      }
+
+      // Generate flying butterflies & birds carrying hearts
+      for (let i = 0; i < 6; i++) {
+        createFlyingLover();
+      }
+    }
+
+    function createFloatingSymbol() {
+      const symbols = ["💖", "💘", "💝", "🌸", "🌹", "💐"];
+      const symbol = document.createElement("div");
+      symbol.classList.add("floating");
+      symbol.innerText = symbols[Math.floor(Math.random() * symbols.length)];
+      symbol.style.left = Math.random() * 100 + "vw";
+      symbol.style.bottom = "0px";
+      symbol.style.animationDuration = (3 + Math.random() * 3) + "s";
+      document.body.appendChild(symbol);
+
+      setTimeout(() => {
+        symbol.remove();
+      }, 6000);
+    }
+
+    function createFlyingLover() {
+      const flyers = ["🦋💖", "🐦💘", "🦋💝", "🐦💖"];
+      const flyer = document.createElement("div");
+      flyer.classList.add("flyer");
+      flyer.innerText = flyers[Math.floor(Math.random() * flyers.length)];
+      flyer.style.left = Math.random() * 50 + "vw";
+      flyer.style.bottom = Math.random() * 50 + "vh";
+      flyer.style.animationDuration = (6 + Math.random() * 4) + "s";
+      document.body.appendChild(flyer);
+
+      setTimeout(() => {
+        flyer.remove();
+      }, 9000);
+    }
+  </script>
+
+</body>
+</html>
